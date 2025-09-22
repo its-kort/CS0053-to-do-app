@@ -40,7 +40,7 @@ def main():
                 n=int(input("Enter task no to remove: "))
                 removetask(n)
             elif ch=="4":
-                print("\nThank you and Goodbye!\n")
+                print("\nThank you and Goodbye!!\n")
                 break;
             else:
                 print("\nWrong Choice!!\n")
