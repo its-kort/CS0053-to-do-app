@@ -4,46 +4,62 @@ tasks = []
 
 
 def add_task(task):
+    task = task.strip()
+    if task == "":
+        print("\nCannot add an empty task.\n")
+        return
     tasks.append(task)
-    print("task added!")
+    print("\nTask added!\n")
 
 
 def show_tasks():
     if len(tasks) == 0:
-        print("no tasks yet")
+        print("No tasks yet.\n")
     else:
         for i in range(len(tasks)):
-            print(i+1, ".", tasks[i])
+            print(f"{i+1}. {tasks[i]}")
 
 
 def remove_task(task_number):
-    tasks.pop(task_number)
-    print("task removed!!")
+    if 0 <= task_number < len(tasks):
+        removed = tasks.pop(task_number)
+        print(f"\nTask removed! -> {removed}\n")
+    else:
+        print("\nPlease enter a valid task number.\n")
 
 
 def main():
+    print("=================")
+    print("TASK TRACKER")
+
     while True:
-        print("1 Add Task")
-        print("2.Show Tasks")
-        print("3.Remove Task")
-        print("4- Exit")
-        choice = input("enter choice : ")
-        
+        print("=================")
+        print("MAIN MENU")
+        print("1. Add Task")
+        print("2. Show Tasks")
+        print("3. Remove Task")
+        print("4. Exit")
+        print("=================")
+
+        choice = input("Enter choice: ")
+        print("-----------------")
+
         if choice == "1":
-            task = input("enter task : ")
+            task = input("Enter task: ")
             add_task(task)
         elif choice == "2":
             show_tasks()
         elif choice == "3":
             try:
                 task_number = int(input("Enter task number to remove: "))
-                remove_task(task_number)
+                remove_task(task_number - 1)
             except ValueError:
                 print("Please enter a valid number.")
         elif choice == "4":
+            print("\nThank you and goodbye!\n")
             break
         else:
-            print("wrong choice!!")
+            print("\nInvalid choice. Please try again.\n")
 
 
 if __name__ == "__main__":
