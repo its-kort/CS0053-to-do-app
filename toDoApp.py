@@ -4,27 +4,34 @@ tasks = []
 
 
 def add_task(task):
+    task = task.strip()
+    if task == "":
+        print("\nCannot add an empty task.\n")
+        return
     tasks.append(task)
-    print("\nTask Added!!\n")
+    print("\nTask added!\n")
 
 
 def show_tasks():
     if len(tasks) == 0:
-        print("No Tasks Yet.\n")
+        print("No tasks yet.\n")
     else:
         for i in range(len(tasks)):
-            print(i+1, ".", tasks[i])
+            print(f"{i+1}. {tasks[i]}")
 
 
 def remove_task(task_number):
-    tasks.pop(task_number)
-    print("\nTask Removed!!\n")
+    if 0 <= task_number < len(tasks):
+        removed = tasks.pop(task_number)
+        print(f"\nTask removed! -> {removed}\n")
+    else:
+        print("\nPlease enter a valid task number.\n")
 
 
 def main():
     print("=================")
     print("TASK TRACKER")
-        
+
     while True:
         print("=================")
         print("MAIN MENU")
@@ -33,12 +40,12 @@ def main():
         print("3. Remove Task")
         print("4. Exit")
         print("=================")
-        
-        choice = input("Enter choice : ")
+
+        choice = input("Enter choice: ")
         print("-----------------")
-        
+
         if choice == "1":
-            task = input("Enter task : ")
+            task = input("Enter task: ")
             add_task(task)
         elif choice == "2":
             show_tasks()
@@ -49,10 +56,10 @@ def main():
             except ValueError:
                 print("Please enter a valid number.")
         elif choice == "4":
-            print("\nThank you and Goodbye!!\n")
+            print("\nThank you and goodbye!\n")
             break
         else:
-            print("\nWrong Choice!!\n")
+            print("\nInvalid choice. Please try again.\n")
 
 
 if __name__ == "__main__":
