@@ -3,7 +3,7 @@
 tasks = []
 
 
-def add_task(task):
+def add_task(task): #adds task to the list, it will append each time the user will add task
     task = task.strip()
     if task == "":
         print("\nCannot add an empty task.\n")
@@ -12,15 +12,15 @@ def add_task(task):
     print("\nTask added!\n")
 
 
-def show_tasks():
+def show_tasks(): #shows the present tasks listed. If there are no task it'll print out "No tasks yet."
     if len(tasks) == 0:
         print("No tasks yet.\n")
     else:
-        for i in range(len(tasks)):
-            print(f"{i+1}. {tasks[i]}")
+        for i in range(len(tasks)): 
+            print(f"{i+1}. {tasks[i]}") #prints out each element on the list
 
 
-def remove_task(task_number):
+def remove_task(task_number): #pops out an element depending on what the user which element s/he wants to remove
     if 0 <= task_number < len(tasks):
         removed = tasks.pop(task_number)
         print(f"\nTask removed! -> {removed}\n")
