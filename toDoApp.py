@@ -37,7 +37,7 @@ def main():
         elif choice == "3":
             try:
                 task_number = int(input("Enter task number to remove: "))
-                remove_task(task_number)
+                remove_task(task_number - 1)
             except ValueError:
                 print("Please enter a valid number.")
         elif choice == "4":
