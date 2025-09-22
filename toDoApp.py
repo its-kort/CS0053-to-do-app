@@ -1,3 +1,5 @@
+# toDoApp.py
+
 tasks=[]
 def addtask(task) :
     tasks.append(task)
@@ -12,8 +14,8 @@ def showTasks( ):
         for i in range (len(tasks)):
             print(f"{i+1}. {tasks[i]}\n")
 
-def removetask(tasknumber):
-    tasks.pop(tasknumber)
+def removetask(task_number):
+    tasks.pop(task_number)
     print("\nTask Removed!!\n")
 
 def main():
@@ -28,21 +30,25 @@ def main():
             print("3. Remove Task")
             print("4. Exit")
             print("=================")
-            ch = input("Enter choice : ")
+            choice = input("Enter choice : ")
             print("-----------------")
-            if ch=="1":
-                t = input("Enter task : ")
+            if choice =="1":
+                tasks = input("Enter task : ")
 
-                addtask(t)
-            elif ch=="2":
+                addtask(tasks)
+            elif choice =="2":
                 showTasks()
-            elif ch=="3":
-                n=int(input("Enter task no to remove: "))
-                removetask(n)
-            elif ch=="4":
+            elif choice =="3":
+                try:
+                    task_number =int(input("Enter task no to remove: "))
+                    removetask(task_number)
+                except ValueError:
+                        print("Please enter a valid number.")
+            elif choice =="4":
                 print("\nThank you and Goodbye!!\n")
                 break;
             else:
                 print("\nWrong Choice!!\n")
 
-main()
+if __name__ == "__main__":
+    main()
